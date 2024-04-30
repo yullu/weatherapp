@@ -18,13 +18,13 @@ class Weather extends Component
         $this->validate();
 
         $city = $this->city;
-        $response = Http::get('http://api.openweathermap.org/geo/1.0/direct?q='.$city.'&limit=1&appid=83676b809d3ab9ff372f042f19d1faff');
+        $response = Http::get('http://api.openweathermap.org/geo/1.0/direct?q='.$city.'&limit=1&appid={KEY}');
         $jsonData = $response->json();
         //dd($jsonData);
         $lat = $jsonData[0]['lat'];
         $lon = $jsonData[0]['lon'];
 
-        $weather = Http::get('http://api.openweathermap.org/data/2.5/weather?lat='.$lat.'&lon='.$lon.'&appid=83676b809d3ab9ff372f042f19d1faff');
+        $weather = Http::get('http://api.openweathermap.org/data/2.5/weather?lat='.$lat.'&lon='.$lon.'{KEY}');
         $weatherData = $weather->json();
         //dd($weatherData);
         //dd($this->weatherData=$weatherData['weather'][0]['description']);
